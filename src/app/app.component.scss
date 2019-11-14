@@ -1,0 +1,70 @@
+.titlenav {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  font-size: 2em;
+  background-color: #5ad;
+  color: white;
+}
+
+.author {
+    margin-left: 2em;
+    font-size: 16px;
+}
+
+input {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  padding-left: 0.5em;
+  padding-right: 12em;
+  border: 1px solid #5ad;
+  border-radius: 0.5em;
+  margin-right: 1em;
+  font-size: 14px;
+}
+
+h1 {
+    display: inline-block;
+}
+
+.calculate {
+  background-color: #5ad;
+  color: white;
+  padding: 0.8em;
+  border-radius: 0.5em;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.clear{
+  border: 1px solid #5ad;
+  color: #5ad;
+  padding: 0.8em;
+  border-radius: 0.5em;
+  margin-left: 0.5em;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.invalid {
+  margin-right: 2em;
+  color: red;
+}
+
+.answers {
+  border-radius: 1em;
+  margin-top: 3em;
+  border: 2px solid rgb(59, 150, 206);
+  padding-top: 2em;
+  padding-left: 2em;
+  padding-bottom: 2em;
+  background-color: rgba(85, 169, 221, 0.25);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.page {
+  margin-top: 3em;
+  margin-left: 3em;
+  margin-right: 3em;
+}
