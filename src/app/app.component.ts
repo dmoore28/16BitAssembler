@@ -35,7 +35,13 @@ export class AppComponent {
       this.reset();
       return;
     }
+    if(!this.input.includes(',')){
+      this.reset();
+      this.isValid = false;
+      return;
+    }
     this.reset();
+    this.isValid = true;
     let parts = this.input.replace(/,/g, "").split(" ");
     if (parts[0] in this.rType) {
       this.type = "R-Type";
@@ -104,7 +110,16 @@ export class AppComponent {
     return s;
   }
 
+  clear() {
+    this.input = null;
+    this.isValid = true;
+    this.binaryInstruction = null;
+    this.hexInstruction = null;
+    this.type = null;
+  }
+
   reset() {
+    this.isValid = true;
     this.binaryInstruction = null;
     this.hexInstruction = null;
     this.type = null;

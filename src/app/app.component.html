@@ -8,7 +8,7 @@
     <h2>Enter Assembly Instruction</h2>
     <input type="text" [(ngModel)]="this.input">
     <button (click)=GetInstruction() class="calculate"> Translate Assembly Code </button>
-    <button (click)=reset() class="clear"> Clear </button>
+    <button (click)=clear() class="clear"> Clear </button>
     <div *ngIf="isValid && type && binaryInstruction && hexInstruction" class="answers">
       <div style="padding-bottom: 1em; font-weight: 600; font-size: 18px;">{{type}}</div>
       <div style="padding-bottom: 0.3em;">{{binaryInstruction}}</div>
