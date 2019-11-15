@@ -31,6 +31,7 @@ export class AppComponent {
   jType = { call: "111" };
 
   GetInstruction() {
+    this.isValid = true;
     if (!this.input) {
       this.reset();
       return;
@@ -38,10 +39,8 @@ export class AppComponent {
     if(!this.input.includes(',')){
       this.reset();
       this.isValid = false;
-      return;
     }
     this.reset();
-    this.isValid = true;
     let parts = this.input.replace(/,/g, "").split(" ");
     if (parts[0] in this.rType) {
       this.type = "R-Type";
@@ -89,6 +88,7 @@ export class AppComponent {
       }
     } else if (parts[0] in this.bType) {
       this.type = "B-Type";
+      this.isValid = true;
       if (parts.length != 2) {
         this.isValid = false;
       } else {
