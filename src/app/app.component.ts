@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { exists } from 'fs';
 
 @Component({
   selector: "app-root",
@@ -46,6 +47,8 @@ export class AppComponent {
     if (parts[0] in this.rType) {
       this.type = "R-Type";
       if (parts[0] == "cmp") {
+        this.checkRegisterValue(parseInt(parts[1].replace("r", "")));
+        this.checkRegisterValue(parseInt(parts[2].replace("r", "")));
         let rs = this.pad((parseInt(parts[1].replace("r", "")) >>> 0).toString(2), 3);
         let rt = this.pad((parseInt(parts[2].replace("r", "")) >>> 0).toString(2), 3);
         let rd = this.pad((parseInt("0") >>> 0).toString(2), 3);
@@ -55,6 +58,9 @@ export class AppComponent {
       else if (parts.length != 4) {
         this.isValid = false;
       } else {
+        this.checkRegisterValue(parseInt(parts[1].replace("r", "")));
+        this.checkRegisterValue(parseInt(parts[2].replace("r", "")));
+        this.checkRegisterValue(parseInt(parts[3].replace("r", "")));
         let rs = this.pad((parseInt(parts[2].replace("r", "")) >>> 0).toString(2), 3);
         let rt = this.pad((parseInt(parts[3].replace("r", "")) >>> 0).toString(2), 3);
         let rd = this.pad((parseInt(parts[1].replace("r", "")) >>> 0).toString(2), 3);
@@ -66,12 +72,16 @@ export class AppComponent {
       if (parts.length < 3 || parts.length > 4) {
         this.isValid = false;
       } else if (parts.length == 4) {
+        this.checkRegisterValue(parseInt(parts[1].replace("r", "")));
+        this.checkRegisterValue(parseInt(parts[2].replace("r", "")));
         let rs = this.pad((parseInt(parts[2].replace("r", "")) >>> 0).toString(2), 3);
         let rd = this.pad((parseInt(parts[1].replace("r", "")) >>> 0).toString(2), 3);
         let immediate = this.pad((parseInt(parts[3].replace("r", "")) >>> 0).toString(2), 7);
         this.binaryInstruction = rs + rd + immediate + this.iType[parts[0]];
         this.hexInstruction = parseInt(this.binaryInstruction, 2).toString(16).toUpperCase();
       } else {
+        this.checkRegisterValue(parseInt(parts[1].replace("r", "")));
+        this.checkRegisterValue(parseInt(parts[2].replace("r", "")));
         let rs = this.pad((parseInt(parts[2].split('r')[1].replace(")", "")) >>> 0).toString(2), 3);
         let rd = this.pad((parseInt(parts[1].replace("r", "")) >>> 0).toString(2), 3);
         let immediate = this.pad((parseInt(parts[2].split('(')[0]) >>> 0).toString(2), 7);
@@ -123,5 +133,11 @@ export class AppComponent {
     this.binaryInstruction = null;
     this.hexInstruction = null;
     this.type = null;
+  }
+
+  checkRegisterValue(value: number) {
+    if(value < 0 || value > 7){
+      this.isValid = false;
+    }
   }
 }
