@@ -25,22 +25,24 @@ input {
 }
 
 h1 {
-    margin-right: 1em;
-    display: inline-block;
+  margin-right: 1em;
+  display: inline-block;
 }
 
 .calculate {
   background-color: #5ad;
   color: white;
   padding: 0.8em;
+  border: none;
   border-radius: 0.5em;
   font-size: 14px;
   font-weight: 500;
   margin-top: 1em;
 }
 
-.clear{
+.clear {
   border: 1px solid #5ad;
+  background-color: white;
   color: #5ad;
   padding: 0.8em;
   border-radius: 0.5em;
