@@ -48,7 +48,7 @@ export class AppComponent {
       this.reset();
       return;
     }
-    if(!this.input.includes(',')){
+    if (!this.input.includes(',')) {
       this.reset();
       this.isValid = false;
     }
@@ -57,7 +57,6 @@ export class AppComponent {
     parts = parts.filter(str => str !== ' ');
     parts = parts.filter(str => str !== '');
     parts = parts.filter(str => str !== '\t');
-    console.log(parts);
     if (parts[0] in this.rType) {
       this.type = "R-Type";
       if (parts[0] == "cmp") {
@@ -133,13 +132,19 @@ export class AppComponent {
     }
 
     this.binaryInstruction = "0b" + this.binaryInstruction;
-    this.hexInstruction = "0x" + this.hexInstruction;
+    this.hexInstruction = "0x" + this.padhex(this.hexInstruction);
   }
 
   pad(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
     return s.slice(size * -1);
+  }
+
+  padhex(value) {
+    var s = value + "";
+    while (s.length < 4) s = "0" + s;
+    return s.slice(4 * -1);
   }
 
   clear() {
@@ -158,7 +163,7 @@ export class AppComponent {
   }
 
   checkRegisterValue(value: number) {
-    if(value < 0 || value > 7){
+    if (value < 0 || value > 7) {
       this.isValid = false;
     }
   }
