@@ -6,9 +6,9 @@
 <div class="page">
   <div>
     <h2>Enter Assembly Instruction</h2>
-    <input type="text" [(ngModel)]="this.input">
-    <button (click)=GetInstruction() class="calculate"> Translate Assembly Code </button>
-    <button (click)=clear() class="clear"> Clear </button>
+    <input type="text" [(ngModel)]="this.input" (keyup.enter)="GetInstruction()">
+    <button (click)="GetInstruction()" class=" calculate"> Translate Assembly Code </button>
+    <button (click)="clear()" class="clear"> Clear </button>
     <div [@fadeInOut] *ngIf="isValid && type && binaryInstruction && hexInstruction" class="answers">
       <div style="padding-bottom: 1em; font-weight: 600; font-size: 18px;">{{type}}</div>
       <div style="padding-bottom: 0.3em;">{{binaryInstruction}}</div>
