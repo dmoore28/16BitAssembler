@@ -53,7 +53,11 @@ export class AppComponent {
       this.isValid = false;
     }
     this.reset();
-    let parts = this.input.replace(/,/g, "").split(" ");
+    let parts = this.input.replace(/,/g, " ").split(" ");
+    parts = parts.filter(str => str !== ' ');
+    parts = parts.filter(str => str !== '');
+    parts = parts.filter(str => str !== '\t');
+    console.log(parts);
     if (parts[0] in this.rType) {
       this.type = "R-Type";
       if (parts[0] == "cmp") {
@@ -62,6 +66,13 @@ export class AppComponent {
         let rs = this.pad((parseInt(parts[1].replace("r", "")) >>> 0).toString(2), 3);
         let rt = this.pad((parseInt(parts[2].replace("r", "")) >>> 0).toString(2), 3);
         let rd = this.pad((parseInt("0") >>> 0).toString(2), 3);
+        this.binaryInstruction = rs + rt + rd + this.rType[parts[0]] + "000";
+        this.hexInstruction = parseInt(this.binaryInstruction, 2).toString(16).toUpperCase();
+      }
+      else if (parts[0] == "ret") {
+        let rs = "111";
+        let rt = "000";
+        let rd = "000";
         this.binaryInstruction = rs + rt + rd + this.rType[parts[0]] + "000";
         this.hexInstruction = parseInt(this.binaryInstruction, 2).toString(16).toUpperCase();
       }
